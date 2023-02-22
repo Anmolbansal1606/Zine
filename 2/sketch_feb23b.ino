@@ -1,0 +1,61 @@
+#include <IRremote.h>
+int RECV_PIN = 11; //Input from IR sensor
+
+IRrecv irrecv(RECV_PIN);
+
+decode_results results;
+
+
+  
+
+unsigned int captured = 0;
+void setup()
+{
+  Serial.begin(9600);
+  irrecv.enableIRIn(); // Start the receiver
+    
+  TCCR1B |= (1<<WGM12);
+  TCCR1B &= ~(1<<WGM13);
+  TCCR1A |= (1<<WGM10) | (1<<WGM11);
+  
+  TCCR1A |= (1<<COM1A1);
+  TCCR1A &= ~(1<<COM1A0);
+  
+  TCCR1B |= (1<<CS10) | (1<<CS11);
+  TCCR1B &= ~(1<<CS12);
+  
+  DDRB |= (1<<DDB1);
+  
+}
+unsigned int i=0;
+
+
+
+void loop()
+{ 
+  if (IrReceiver.decode()) {
+    int z=IrReceiver.decodedIRData.command;
+     irrecv.resume();
+    Serial.println(z);
+    
+    if (z == 12) { //12 for 0
+      for(i=0;i<1024;i++)
+      {
+        OCR1A = i;
+        delay(2);
+        
+      }
+    }
+    
+ 
+          
+     if (z == 16){ //16 for 1    
+     for(i=1023;i>0;i--)
+      {
+        OCR1A = i;
+        delay(2);
+      }
+   
+       
+      
+      }}}

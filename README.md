@@ -1,5 +1,5 @@
 # Zine
-This is project from Zine .
+
 The first Project consist of controlling Servo Motor from potentiometer.I have upload screenshot and link of Tinkercad.The link for tinkercad stimulation  is https://www.tinkercad.com/things/lK16Lt6TwId?sharecode=M6xJkwNNcQ1MRn0dgx95Y9RonPUCmS-RDPvyrFJcyNM  
 
 The first part of Second project Consist of Controlling Led density with Pwm and made a PCB . I have upload a Code , and both pcb and schmetic file for same.
